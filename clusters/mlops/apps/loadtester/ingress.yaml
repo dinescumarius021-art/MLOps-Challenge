@@ -1,8 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: loadtester
+  name: loadtester-ingress
   namespace: loadtester
+  annotations:
+    nginx.ingress.kubernetes.io/auth-url: "http://oauth2-proxy.loadtester.svc.cluster.local:4180/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "http://loadtester.local/oauth2/start?rd=$escaped_request_uri"
 spec:
   ingressClassName: nginx
   rules:
@@ -16,3 +19,13 @@ spec:
             name: loadtester
             port:
               number: 80
+  - host: loadtester.local
+    http:
+      paths:
+      - path: /oauth2
+        pathType: Prefix
+        backend:
+          service:
+            name: oauth2-proxy
+            port:
+              number: 4180

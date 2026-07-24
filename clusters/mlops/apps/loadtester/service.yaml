@@ -9,5 +9,5 @@ spec:
     app: loadtester
   ports:
   - port: 8081
-    targetPort: 8081
+    targetPort: 8080
     name: http

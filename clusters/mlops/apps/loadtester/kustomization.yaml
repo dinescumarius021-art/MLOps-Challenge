@@ -8,6 +8,7 @@ resources:
   - ingress.yaml
   - hpa.yaml
 
-commonLabels:
-  environment: dev
-  challenge: raiffeisen-mlops
+labels:
+  - pairs:
+      environment: dev
+      challenge: raiffeisen-mlops

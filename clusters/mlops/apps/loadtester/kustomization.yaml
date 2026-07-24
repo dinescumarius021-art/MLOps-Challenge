@@ -12,3 +12,4 @@ labels:
   - pairs:
       environment: dev
       challenge: raiffeisen-mlops
+    includeTemplates: true

@@ -8,6 +8,7 @@ resources:
   - ingress.yaml
   - hpa.yaml
   - oauth2-proxy.yaml
+  - oauth2-proxy-ingress.yaml
 
 labels:
   - pairs:
